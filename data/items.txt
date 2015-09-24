@@ -37,3 +37,5 @@ Blocks
 Yoyo
 Smelly Cheese
 Mousetrap
+Hammer
+Candy Bar
