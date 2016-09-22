@@ -3,17 +3,12 @@ Ham sandwich
 Wine glass
 Scarf
 Soccer ball
-Smile
 Box of Chocolates
 Tripod
-Johnny Depp
-Sum 41
 Wrench
 Milk
 Christmas Tree
-Elephant
 Bicycle wheel
-Elbow
 Reading Glasses
 Heart
 Dragon
@@ -39,3 +34,5 @@ Smelly Cheese
 Mousetrap
 Hammer
 Candy Bar
+Kite
+Book

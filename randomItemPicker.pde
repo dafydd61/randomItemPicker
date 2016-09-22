@@ -8,7 +8,8 @@ String API_KEY = "613a48d95d8506ebe36ec618ee9c8103";
 
 void setup() {
 
-  size(displayWidth, displayHeight);
+  fullScreen();
+  //size(displayWidth, displayHeight);
 
   items = loadStrings("items.txt");
 
@@ -105,8 +106,4 @@ void keyPressed() {
       loop();
       break;
   }
-}
-
-boolean sketchFullScreen() {
-  return true;
 }
