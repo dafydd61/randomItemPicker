@@ -3,6 +3,7 @@ StringList itemList;
 int itemIndex = -1;
 XML xml;
 PFont f;
+boolean gettingThing = false;
 
 String API_KEY = "613a48d95d8506ebe36ec618ee9c8103";
 
@@ -28,40 +29,50 @@ void setup() {
 }
 
 void draw() {
+  
+  if (gettingThing) {
 
-  background(0);
-
-  if (itemIndex >= items.length) {
-
-    text("I'm all out of stuff!", 20, 60);
-    text("Press r to restart", 20, 120);
-
-  } else if (itemIndex < 0) {
-
-    text("Let's get started!", 20, 60);
-    text("Press spacebar to get your thing", 20, 120);
+    background(0);
+    text("Getting your thing...", 20, 60);
+    gettingThing = false;
 
   } else {
-
-    String searchString;
-    println(items[itemIndex]);
-    searchString = items[itemIndex].replace(' ', '+');
-    String url = getFlickrPic(searchString);
-
-    PImage pic = loadImage(url);
-    if (pic.height > height - 120) {
-      float scaleFactor = float(height - 120) / pic.height;
-      pic.resize(int(pic.width * scaleFactor), height - 120 );
+  
+    background(0);
+  
+    if (itemIndex >= items.length) {
+  
+      text("I'm all out of stuff!", 20, 60);
+      text("Press r to restart", 20, 120);
+  
+    } else if (itemIndex < 0) {
+  
+      text("Let's get started!", 20, 60);
+      text("Press spacebar to get your thing", 20, 120);
+  
+    } else {
+  
+      String searchString;
+      println(items[itemIndex]);
+      searchString = items[itemIndex].replace(' ', '+');
+      String url = getFlickrPic(searchString);
+  
+      PImage pic = loadImage(url);
+      if (pic.height > height - 120) {
+        float scaleFactor = float(height - 120) / pic.height;
+        pic.resize(int(pic.width * scaleFactor), height - 120 );
+      }
+  
+      image(pic, width/2, height/2);
+  
+      fill(255);
+      text(items[itemIndex], 20, 60);
+  
     }
-
-    image(pic, width/2, height/2);
-
-    fill(255);
-    text(items[itemIndex], 20, 60);
-
+  
+    noLoop();
+    
   }
-
-  noLoop();
 
 }
 
@@ -98,11 +109,13 @@ void keyPressed() {
   switch (key) {
     case ' ':
       itemIndex += 1;
+      gettingThing = true;
       loop();
       break;
     case 'r':
       shuffleItems();
       itemIndex = -1;
+      gettingThing = true;
       loop();
       break;
   }
